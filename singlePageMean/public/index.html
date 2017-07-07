@@ -1,0 +1,108 @@
+<!-- index.html -->
+<!doctype html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="myApp">
+
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Optimize mobile viewport -->
+    <title>mean App</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- load bootstrap -->
+    <style>
+    html {
+        overflow-y: scroll;
+    }
+
+    #todo-list {
+        margin-bottom: 30px;
+    }
+
+    .h3-css {
+        margin-top: 0px;
+    }
+
+    .paddingform {
+        padding-top: 8px;
+    }
+    </style>
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <!-- load angular -->
+    <script src="contrl.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="myCtrl">
+        <div class="jumbotron text-center" ng-init="getAll();">
+            <h1>Users</h1>
+        </div>
+        <div id="todo-form" class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-5">
+                    <div class="text-left">
+                        <h3 class="text-uppercase h3-css">User Lists</h3>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users">
+                                <td>{{$index+1}}</td>
+                                <td>{{user.firstName}}</td>
+                                <td>{{user.lastName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-offset-1 col-sm-6">
+                    <div class="text-left">
+                        <h3 class="text-uppercase h3-css">User add</h3>
+                    </div>
+                    <form class="form-horizontal paddingform">
+                        <div class="form-group">
+                            <label class="col-sm-3">First Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="firstName" placeholder="Enter firstName" ng-model="formData.firstName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">Last Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="lastName" class="form-control" ng-model="formData.lastName" placeholder="Enter lastName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">Address:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="address" class="form-control" ng-model="formData.address" placeholder="Enter address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3">Number:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="number" class="form-control" ng-model="formData.number" placeholder="Enter number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-1">
+                                <button type="submit" class="btn btn-primary btn-lg" ng-click="create()">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
